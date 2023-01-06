@@ -18,6 +18,7 @@ module Auth3
 
           rpc :CreateIdentity, ::Auth3::Identity::Admin::CreateIdentityRequest, ::Auth3::Identity::Admin::CreateIdentityResponse
           rpc :GetIdentity, ::Auth3::Identity::Admin::GetIdentityRequest, ::Auth3::Identity::Admin::GetIdentityResponse
+          rpc :GetIdentityByIdentifier, ::Auth3::Identity::Admin::GetIdentityByIdentifierRequest, ::Auth3::Identity::Admin::GetIdentityByIdentifierResponse
           rpc :GetIdentitiesByAttribute, ::Auth3::Identity::Admin::GetIdentitiesByAttributeRequest, ::Auth3::Identity::Admin::GetIdentitiesByAttributeResponse
           rpc :GetIdentities, ::Auth3::Identity::Admin::GetIdentitiesRequest, ::Auth3::Identity::Admin::GetIdentitiesResponse
           rpc :UpdateIdentity, ::Auth3::Identity::Admin::UpdateIdentityRequest, ::Auth3::Identity::Admin::UpdateIdentityResponse

@@ -16,9 +16,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :identity_id, :string, 1
     end
     add_message "depot.devtools.auth.v0.identity.admin.GetIdentitiesRequest" do
+      optional :page_size, :int32, 1
+      optional :page_token, :string, 2
     end
     add_message "depot.devtools.auth.v0.identity.admin.GetIdentitiesResponse" do
       repeated :identities, :message, 1, "depot.devtools.auth.v0.identity.admin.GetIdentitiesResponse.Identity"
+      optional :next_page_token, :string, 2
+      optional :total_size, :int32, 3
     end
     add_message "depot.devtools.auth.v0.identity.admin.GetIdentitiesResponse.Identity" do
       optional :identity_id, :string, 1
@@ -47,6 +51,29 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :lock, :enum, 9, "depot.devtools.auth.v0.identity.admin.GetIdentityResponse.Lock"
     end
     add_enum "depot.devtools.auth.v0.identity.admin.GetIdentityResponse.Lock" do
+      value :UNLOCKED, 0
+      value :ADMIN_LOCKED, 1
+    end
+    add_message "depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierRequest" do
+      optional :attribute, :string, 1
+      optional :value, :string, 2
+      optional :connection_id, :string, 3
+    end
+    add_message "depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierResponse" do
+      optional :identity, :message, 1, "depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierResponse.Identity"
+    end
+    add_message "depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierResponse.Identity" do
+      optional :identity_id, :string, 1
+      optional :created_at, :message, 2, "google.protobuf.Timestamp"
+      optional :updated_at, :message, 3, "google.protobuf.Timestamp"
+      optional :main_identifier, :string, 4
+      optional :traits_id, :string, 5
+      repeated :addresses_ids, :string, 6
+      map :credentials_ids, :string, :string, 7
+      optional :schema_id, :string, 8
+      optional :lock, :enum, 9, "depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierResponse.Identity.Lock"
+    end
+    add_enum "depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierResponse.Identity.Lock" do
       value :UNLOCKED, 0
       value :ADMIN_LOCKED, 1
     end
@@ -710,6 +737,10 @@ module Auth3
       GetIdentityRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityRequest").msgclass
       GetIdentityResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityResponse").msgclass
       GetIdentityResponse::Lock = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityResponse.Lock").enummodule
+      GetIdentityByIdentifierRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierRequest").msgclass
+      GetIdentityByIdentifierResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierResponse").msgclass
+      GetIdentityByIdentifierResponse::Identity = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierResponse.Identity").msgclass
+      GetIdentityByIdentifierResponse::Identity::Lock = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityByIdentifierResponse.Identity.Lock").enummodule
       GetIdentitiesByAttributeRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentitiesByAttributeRequest").msgclass
       GetIdentitiesByAttributeResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentitiesByAttributeResponse").msgclass
       GetIdentitiesByAttributeResponse::Identity = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentitiesByAttributeResponse.Identity").msgclass
