@@ -294,7 +294,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :PURPOSE_SECOND_FACTOR, 2
     end
     add_message "depot.devtools.auth.v0.identity.admin.UpdateConnectionRequest" do
-      optional :name, :string, 1
       optional :client_id, :string, 2
       optional :client_secret, :string, 3
       optional :button_image_url, :string, 4
