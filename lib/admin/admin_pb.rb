@@ -44,7 +44,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :created_at, :message, 2, "google.protobuf.Timestamp"
       optional :updated_at, :message, 3, "google.protobuf.Timestamp"
       optional :main_identifier, :string, 4
-      optional :traits_id, :string, 5
+      optional :profile_id, :string, 5
       repeated :addresses_ids, :string, 6
       map :credentials_ids, :string, :string, 7
       optional :schema_id, :string, 8
@@ -67,7 +67,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :created_at, :message, 2, "google.protobuf.Timestamp"
       optional :updated_at, :message, 3, "google.protobuf.Timestamp"
       optional :main_identifier, :string, 4
-      optional :traits_id, :string, 5
+      optional :profile_id, :string, 5
       repeated :addresses_ids, :string, 6
       map :credentials_ids, :string, :string, 7
       optional :schema_id, :string, 8
@@ -89,7 +89,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :created_at, :message, 2, "google.protobuf.Timestamp"
       optional :updated_at, :message, 3, "google.protobuf.Timestamp"
       optional :main_identifier, :string, 4
-      optional :traits_id, :string, 5
+      optional :profile_id, :string, 5
       repeated :addresses_ids, :string, 6
       map :credentials_ids, :string, :string, 7
       optional :schema_id, :string, 8
@@ -126,7 +126,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :updated_at, :message, 3, "google.protobuf.Timestamp"
       optional :identity_id, :string, 4
       optional :type, :int32, 5
-      optional :name, :string, 6
+      optional :connection_id, :string, 6
       optional :configured, :bool, 7
     end
     add_message "depot.devtools.auth.v0.identity.admin.UpdateCredentialRequest" do
@@ -137,7 +137,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "depot.devtools.auth.v0.identity.admin.UpdateCredentialResponse" do
     end
     add_message "depot.devtools.auth.v0.identity.admin.CreateConnectionRequest" do
-      optional :name, :string, 1
+      optional :id, :string, 1
       optional :client_id, :string, 2
       optional :client_secret, :string, 3
       optional :button_image_url, :string, 4
@@ -208,7 +208,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :OIDC, 4
     end
     add_message "depot.devtools.auth.v0.identity.admin.CreateConnectionResponse" do
-      optional :name, :string, 1
+      optional :id, :string, 1
     end
     add_message "depot.devtools.auth.v0.identity.admin.GetConnectionsRequest" do
     end
@@ -216,7 +216,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :connections, :message, 1, "depot.devtools.auth.v0.identity.admin.GetConnectionsResponse.Connection"
     end
     add_message "depot.devtools.auth.v0.identity.admin.GetConnectionsResponse.Connection" do
-      optional :name, :string, 1
+      optional :id, :string, 1
       optional :client_id, :string, 2
       optional :client_secret, :string, 3
       optional :button_image_url, :string, 4
@@ -224,9 +224,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :oidc_discovery_url, :string, 7
       repeated :mfa, :string, 8
       optional :type, :enum, 9, "depot.devtools.auth.v0.identity.admin.GetConnectionsResponse.Types"
-      optional :id, :string, 10
-      optional :scopes, :string, 11
-      optional :purpose, :enum, 12, "depot.devtools.auth.v0.identity.admin.GetConnectionsResponse.Purposes"
+      optional :scopes, :string, 10
+      optional :purpose, :enum, 11, "depot.devtools.auth.v0.identity.admin.GetConnectionsResponse.Purposes"
     end
     add_enum "depot.devtools.auth.v0.identity.admin.GetConnectionsResponse.Providers" do
       value :NONE, 0
@@ -525,17 +524,17 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "depot.devtools.auth.v0.identity.admin.UpdateAddressResponse" do
     end
-    add_message "depot.devtools.auth.v0.identity.admin.GetTraitsRequest" do
+    add_message "depot.devtools.auth.v0.identity.admin.GetProfileRequest" do
       optional :identity_id, :string, 1
     end
-    add_message "depot.devtools.auth.v0.identity.admin.GetTraitsResponse" do
-      optional :traits, :string, 1
+    add_message "depot.devtools.auth.v0.identity.admin.GetProfileResponse" do
+      optional :profile, :string, 1
     end
-    add_message "depot.devtools.auth.v0.identity.admin.UpdateTraitsRequest" do
+    add_message "depot.devtools.auth.v0.identity.admin.UpdateProfileRequest" do
       optional :identity_id, :string, 1
-      optional :traits, :string, 2
+      optional :profile, :string, 2
     end
-    add_message "depot.devtools.auth.v0.identity.admin.UpdateTraitsResponse" do
+    add_message "depot.devtools.auth.v0.identity.admin.UpdateProfileResponse" do
     end
     add_message "depot.devtools.auth.v0.identity.admin.GetIdentityLoginAttemptsRequest" do
       optional :identity_id, :string, 1
@@ -786,10 +785,10 @@ module Auth3
       GetAddressResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetAddressResponse").msgclass
       UpdateAddressRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.UpdateAddressRequest").msgclass
       UpdateAddressResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.UpdateAddressResponse").msgclass
-      GetTraitsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetTraitsRequest").msgclass
-      GetTraitsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetTraitsResponse").msgclass
-      UpdateTraitsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.UpdateTraitsRequest").msgclass
-      UpdateTraitsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.UpdateTraitsResponse").msgclass
+      GetProfileRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetProfileRequest").msgclass
+      GetProfileResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetProfileResponse").msgclass
+      UpdateProfileRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.UpdateProfileRequest").msgclass
+      UpdateProfileResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.UpdateProfileResponse").msgclass
       GetIdentityLoginAttemptsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityLoginAttemptsRequest").msgclass
       GetIdentityLoginAttemptsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityLoginAttemptsResponse").msgclass
       GetIdentityLoginAttemptsResponse::Attempt = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("depot.devtools.auth.v0.identity.admin.GetIdentityLoginAttemptsResponse.Attempt").msgclass

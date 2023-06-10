@@ -26,8 +26,8 @@ module Auth3
           rpc :GetAddresses, ::Auth3::Identity::Admin::GetAddressesRequest, ::Auth3::Identity::Admin::GetAddressesResponse
           rpc :GetAddress, ::Auth3::Identity::Admin::GetAddressRequest, ::Auth3::Identity::Admin::GetAddressResponse
           rpc :UpdateAddress, ::Auth3::Identity::Admin::UpdateAddressRequest, ::Auth3::Identity::Admin::UpdateAddressResponse
-          rpc :GetTraits, ::Auth3::Identity::Admin::GetTraitsRequest, ::Auth3::Identity::Admin::GetTraitsResponse
-          rpc :UpdateTraits, ::Auth3::Identity::Admin::UpdateTraitsRequest, ::Auth3::Identity::Admin::UpdateTraitsResponse
+          rpc :GetProfile, ::Auth3::Identity::Admin::GetProfileRequest, ::Auth3::Identity::Admin::GetProfileResponse
+          rpc :UpdateProfile, ::Auth3::Identity::Admin::UpdateProfileRequest, ::Auth3::Identity::Admin::UpdateProfileResponse
           rpc :GetCredentials, ::Auth3::Identity::Admin::GetCredentialsRequest, ::Auth3::Identity::Admin::GetCredentialsResponse
           rpc :UpdateCredential, ::Auth3::Identity::Admin::UpdateCredentialRequest, ::Auth3::Identity::Admin::UpdateCredentialResponse
           rpc :GetIdentityLoginAttempts, ::Auth3::Identity::Admin::GetIdentityLoginAttemptsRequest, ::Auth3::Identity::Admin::GetIdentityLoginAttemptsResponse
